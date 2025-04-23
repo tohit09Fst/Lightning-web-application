@@ -31,27 +31,31 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth="sm">
-        <Box display="flex" alignItems="center" justifyContent="space-between" mt={4} mb={2}>
-          <Typography variant="h4" fontWeight={700}>
-            Lightning WebLN Demo
-          </Typography>
-          <IconButton onClick={() => setDarkMode((d) => !d)} color="inherit">
-            {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
-          </IconButton>
-        </Box>
-        <FiatSatsConverter />
-        <SendPayment />
-        <Keysend />
-        <AutoPayOnScroll />
-        <WalletInfo />
-        <InvoiceGenerator />
-        <PayViaWebLN />
-        <QRCodeScanner />
-        <Box mt={4} textAlign="center">
-          <Typography variant="body2" color="text.secondary">
-            Powered by Alby WebLN · Responsive · Dark Mode · QR · Fiat/Sats
-          </Typography>
+      <Container maxWidth="xl" disableGutters sx={{ minHeight: '100vh', width: '100vw', p: 0 }}>
+        <Box display="flex" flexDirection="column" minHeight="100vh" width="100vw" bgcolor="background.default">
+          <Box display="flex" alignItems="center" justifyContent="space-between" px={{ xs: 2, md: 6 }} pt={4} pb={2}>
+            <Typography variant="h4" fontWeight={700}>
+              Lightning WebLN Demo
+            </Typography>
+            <IconButton onClick={() => setDarkMode((d) => !d)} color="inherit">
+              {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+            </IconButton>
+          </Box>
+          <Box flex={1} width="100%" px={{ xs: 2, md: 6 }}>
+            <FiatSatsConverter />
+            <SendPayment />
+            <Keysend />
+            <AutoPayOnScroll />
+            <WalletInfo />
+            <InvoiceGenerator />
+            <PayViaWebLN />
+            <QRCodeScanner />
+          </Box>
+          <Box mt={4} textAlign="center" py={2} width="100%" bgcolor="background.paper">
+            <Typography variant="body2" color="text.secondary">
+              Powered by Alby WebLN · Responsive · Dark Mode · QR · Fiat/Sats
+            </Typography>
+          </Box>
         </Box>
       </Container>
     </ThemeProvider>
