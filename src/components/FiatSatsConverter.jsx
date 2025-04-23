@@ -49,14 +49,14 @@ const FiatSatsConverter = () => {
       <Box display="flex" gap={2} mt={1}>
         <TextField
           label="USD"
-          type="number"
+          type="text"
           value={fiat}
           onChange={handleFiatChange}
           fullWidth
         />
         <TextField
           label="Sats"
-          type="number"
+          type="text"
           value={sats}
           onChange={handleSatsChange}
           fullWidth

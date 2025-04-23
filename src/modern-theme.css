@@ -1,0 +1,144 @@
+/* Modern Theme CSS for Lightning Web Application */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Card Animations */
+.card-animation {
+  animation: slideUp 0.5s ease-out;
+}
+
+/* Lightning Effect */
+.lightning-icon {
+  transition: all 0.3s ease;
+}
+
+.lightning-icon:hover {
+  filter: drop-shadow(0 0 8px rgba(249, 168, 37, 0.7));
+  transform: scale(1.1);
+}
+
+/* Paper Hover Effect */
+.paper-hover {
+  transition: all 0.3s ease;
+}
+
+.paper-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Animations */
+.button-animation {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-animation:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.button-animation:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(100, 100);
+    opacity: 0;
+  }
+}
+
+/* Tab Transitions */
+.tab-transition {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.tab-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.tab-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tab-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tab-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* Bitcoin Gold Gradient */
+.bitcoin-gradient {
+  background: linear-gradient(135deg, #f9a825 0%, #ff8f00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Card Content Styling */
+.card-content {
+  padding: 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .responsive-padding {
+    padding: 16px 8px;
+  }
+  
+  .responsive-text {
+    font-size: 0.9rem;
+  }
+}

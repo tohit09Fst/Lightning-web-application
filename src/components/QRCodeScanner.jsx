@@ -1,9 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 import { BrowserMultiFormatReader } from '@zxing/browser';
 
 const QRCodeScanner = () => {
@@ -55,32 +58,34 @@ const QRCodeScanner = () => {
   };
 
   return (
-    <Box mb={2}>
-      <Typography variant="h6">QR Code Scanner</Typography>
-      <Button variant="contained" color="primary" onClick={startScan} disabled={scanning} sx={{ mr: 2 }}>
-        {scanning ? 'Scanning...' : 'Start Scan'}
-      </Button>
-      {scanning && (
-        <Button variant="outlined" color="secondary" onClick={stopScan} sx={{ ml: 2 }}>
-          Stop
+    <Paper elevation={2} sx={{ p: 3, mb: 4, width: '100%', maxWidth: 500, mx: 'auto' }}>
+      <Typography variant="h5" mb={2} align="center">QR Code Scanner</Typography>
+      <Stack direction="row" spacing={2} justifyContent="center" mb={2}>
+        <Button variant="contained" color="primary" onClick={startScan} disabled={scanning} sx={{ mr: 2 }}>
+          {scanning ? 'Scanning...' : 'Start Scan'}
         </Button>
-      )}
-      <Box mt={2}>
-        <video ref={videoRef} style={{ width: '100%', maxWidth: 320, display: scanning ? 'block' : 'none' }} />
-      </Box>
-      {result && (
-        <Box mt={2}>
-          <Typography variant="body2">Scanned Invoice:</Typography>
-          <TextField value={result} fullWidth margin="dense" InputProps={{ readOnly: true }} />
-          <Button variant="contained" color="success" onClick={handlePay} sx={{ mt: 1 }}>
-            Pay Invoice
+        {scanning && (
+          <Button variant="outlined" color="secondary" onClick={stopScan}>
+            Stop
           </Button>
+        )}
+      </Stack>
+      {scanning && (
+        <Box mb={2} sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Box component="video" ref={videoRef} sx={{ width: '100%', maxWidth: 400, borderRadius: 2, boxShadow: 3 }} autoPlay muted />
         </Box>
+      )}
+      {result && (
+        <Paper variant="outlined" sx={{ p: 2, mb: 2 }}>
+          <Typography variant="subtitle1" gutterBottom>Scanned Invoice</Typography>
+          <TextField value={result} fullWidth margin="dense" InputProps={{ readOnly: true }} />
+          <Button variant="contained" color="success" onClick={handlePay} sx={{ mt: 1 }}>Pay Invoice</Button>
+        </Paper>
       )}
       {status && (
         <Alert severity={status.type} sx={{ mt: 2 }}>{status.message}</Alert>
       )}
-    </Box>
+    </Paper>
   );
 };
 
